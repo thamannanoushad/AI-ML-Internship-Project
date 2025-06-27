@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Text Summarizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Text Summarizer</h1>
+    <form method="POST">
+        <textarea name="article" rows="10" cols="60" placeholder="Paste your text here..."></textarea><br><br>
+        <input type="submit" value="Generate Summary" class="btn">
+    </form>
+
+    <form method="GET">
+        <button type="clear" class="btn" style="margin-top: 15px;">Clear Page</button>
+    </form>
+
+        {% if summary %}
+            <div class="result">
+                <h2>Summary</h2>
+                <p>{{ summary }}</p>
+                <p><strong>Word Count:</strong> {{ metrics.word_count }}</p>
+                <p><strong>Readability Score:</strong> {{ metrics.readability }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+    {% if history %}
+<div class="result">
+    <h2>Summary History</h2>
+    {% for item in history|reverse %}
+        <p><strong>Original:</strong> {{ item.input }}</p>
+        <p><strong>Summary:</strong> {{ item.summary }}</p>
+        <p><strong>Word Count:</strong> {{ item.metrics.word_count }}</p>
+        <p><strong>Readability:</strong> {{ item.metrics.readability }}</p>
+        <hr>
+    {% endfor %}
+    <form method="POST" action="{{ url_for('clear_history') }}">
+        <button type="submit" class="btn danger" style="margin-top: 10px;">Clear History</button>
+    </form>
+</div>
+{% endif %}
+
+</body>
+</html>
