@@ -1,5 +1,5 @@
-<h2> Project 1 name: AI writer with text summarization</h2>
-# Project 2 name: Face mask detection with live alert system
+## Project 1 name: AI writer with text summarization
+## Project 2 name: Face mask detection with live alert system
 
 Due to GitHub’s file size limitations, I was unable to upload the complete code and model files for the face mask detection project. The total size of the files exceeded the 100 MB limit imposed by GitHub for individual files. Despite attempts to reduce the size and use Git Large File Storage (Git LFS), the hosting constraints remained a challenge.
 
